@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header';
-import RecipeDetail from "./components/RecipeDetail";
 import RecipesListings from './components/RecipesListings';
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
     <div className="app">
       <Header setSearchQuery={setSearchQuery} query={query} />
       <RecipesListings query={query} />
-      <RecipeDetail/>
+      
     </div>
   );
 }
