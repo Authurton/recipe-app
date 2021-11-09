@@ -4,16 +4,9 @@ import "./RecipeComponent.css"
 
 
 const RecipeComponent = () => {
-
     const recipes  = useSelector((state) => state.allRecipes.recipes);
-
-        console.log(recipes)
     const renderList =   recipes.map((recipe) => {
         const {id,text, recipe:{ingredients},label, image} = recipe;
-
-        if(ingredients && ingredients.length === 0){
-            return <p>No ingredients yet....</p>
-        }
 
         return(
             <div>
@@ -33,7 +26,6 @@ const RecipeComponent = () => {
                         })
                     }
                 </div>
-                <div></div>
             </div>
         )})
 
