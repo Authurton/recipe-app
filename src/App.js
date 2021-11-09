@@ -1,18 +1,23 @@
 import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header';
-import { BrowserRouter as Router,  Route  } from 'react-router-dom';
-// import TacosListings from './components/TacosListings';
+
+// import { BrowserRouter as Router,  Route, Routes  } from 'react-router-dom';
+import RecipeDetail from "./components/RecipeDetail";
 import RecipesListings from './components/RecipesListings';
 
-
 function App() {
-  
+  const [query, setQuery] = useState("")
+
+  const setSearchQuery = (searchTerm) => {
+      setQuery(searchTerm)
+  }
+
   return (
     <div className="app">
-      <Header/>
-      <RecipesListings/>
-      
+      <Header setSearchQuery={setSearchQuery} query={query} />
+      <RecipesListings query={query} />
+      <RecipeDetail/>
     </div>
   );
 }

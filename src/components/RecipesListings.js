@@ -1,35 +1,36 @@
-import React, {useEffect } from 'react';
+import React, {useEffect,  useState} from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setRecipes } from "../redux/actions/recipesActions";
-import RecipeComponent from './RecipeComponent';
+import RecipeComponent from "./RecipeComponent";
 
-function RecipesListings() {
 
-    const recipes = useSelector((state) => state);
+
+const RecipesListings = ({query}) => {
+    const recipes  = useSelector((state) => state);
     const dispatch = useDispatch();
 
+    const searchQuery = Boolean(query) ? query : "tacos"
+    console.log("mbufafa", searchQuery)
+
     const fetchRecipes = async() => {
-        const response = await axios.get("https://api.edamam.com/search?q=chicken&app_id=53abda96&app_key=bf5b8400a14b890817623912fd409869&from=0&to=3&calories=591-722&health=alcohol-free")
-            .catch((err) => {
-                console.log("Err", err)
-            });
-            dispatch(setRecipes(response.data));
+        const response = await axios.get(`https://api.edamam.com/search?q=${searchQuery}&app_id=53abda96&app_key=bf5b8400a14b890817623912fd409869&from=0&to=3&calories=591-722`)
+        .then((response) => dispatch(setRecipes(response.data.hits)))
+        .catch((err) => console.log("Err", err))
+            
     };
 
     useEffect(() => {
         fetchRecipes();
-    }, [])
-    console.log("Recipes:", recipes);
+    }, [query])
+    // console.log( "Recipes: ",recipes);
 
-    return (
+    return(
         <div className="app__recipes" >
-                {/* {recipes.map(recipe => {
-                    return <RecipeComponent recipe={recipe} />
-                })} */}
-                <RecipeComponent/>
-            </div>
+            <RecipeComponent />
+           
+        </div>
     )
 }
 
-export default RecipesListings
+export default RecipesListings;

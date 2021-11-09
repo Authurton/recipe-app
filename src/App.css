@@ -43,3 +43,10 @@
   display: grid;
   grid-template-columns: 230px 230px;
 }
+
+.recipe__image {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
