@@ -1,7 +1,5 @@
-import { render } from "@testing-library/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import "./RecipeComponent.css"
 
 
@@ -11,7 +9,7 @@ const RecipeComponent = () => {
 
         console.log(recipes)
     const renderList =   recipes.map((recipe) => {
-        const {id, healthLabels,text, recipe:{ingredients}, ingredientLines, label, image} = recipe;
+        const {id,text, recipe:{ingredients},label, image} = recipe;
 
         if(ingredients && ingredients.length === 0){
             return <p>No ingredients yet....</p>
@@ -19,7 +17,7 @@ const RecipeComponent = () => {
 
         return(
             <div>
-                <img className="recipe__image" src={recipe.recipe.image} alt="Taco image"/>
+                <img className="recipe__image" src={recipe.recipe.image} alt="Tacos..."/>
                 <div className="recipe__label">{recipe.recipe.label}  </div>
                 <div >
                     {
