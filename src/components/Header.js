@@ -7,7 +7,7 @@ function Header({setSearchQuery, query}) {
     
     return (
         <div>
-            <h1>Here is a list of nice tacos Nicc....</h1>
+            <h1>Here is a list of nice tacos Nicco....</h1>
             <form className="app__form" >
                 <input type="text" placeholder="Search for tacos recipes..."  
                      className="app__input"
